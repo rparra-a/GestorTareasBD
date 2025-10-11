@@ -1,8 +1,5 @@
 package latinasincloud.GestionTareas.Java.exception;
 
-
-import latinasincloud.GestionTareas.Java.exception.EstadoInvalidoException;
-import latinasincloud.GestionTareas.Java.exception.RecursoNoEncontradoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
