@@ -77,7 +77,7 @@ Agrega un manejador en el ControllerAdvice para capturar la nueva excepción y d
 
 
 
-## RECURSOS TECNOLOGICOS:
+### RECURSOS TECNOLOGICOS:
 
 __1) Spring Boot:__
 
