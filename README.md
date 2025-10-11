@@ -61,7 +61,7 @@ __Extras:__
 
 #### 4) Excepction 
 
-Se creoron dos Excepción Personalizada para Manejar un error especifco para el método EliminarTareaya que podria haber dos fallas:  
+Se crearon dos Excepción Personalizada para Manejar un error especifco para el método EliminarTareaya que podria haber dos fallas:  
 * Tarea no encontrada: La tarea con ese ID no existe. (RecursoNoEncontradoException)
 * Estado incorrecto: La tarea existe, pero su estado no es "completada". (EstadoInvalidoException.java)
 
@@ -69,11 +69,19 @@ Además para un manejo de errores más centralizado y personalizado, se creo Glo
 Esto reemplaza los ResponseEntity.notFound().build() en el controlador.
 Agrega un manejador en el ControllerAdvice para capturar la nueva excepción y devolver un código de estado 409 Conflict.
 
+### Conceptos Practicados:
+
+* Desarrollo de APIs REST con Spring Boot.
+* Manejo de Verbos y Códigos HTTP (POST 201, GET 200, PUT 200/204, DELETE 200/204).
+* Aplicación del concepto CRUD (Create, Read, Update, Delete).
+
 
 ## Criterios de Finalización:
 * El código para el Ejercicio está completo y pasa las pruebas de lógica.
 * La API REST de To-Do List está implementada en Spring Boot.
 * Todos los Endpoints Requeridos funcionan correctamente y devuelven los códigos HTTP apropiados.
+
+------------------------------------------------------------------------------------------
 
 
 
