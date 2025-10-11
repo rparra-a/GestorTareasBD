@@ -13,61 +13,62 @@ Usar Postman como plataforma de desarrollo y pruebas de APIs (Verbos y códigos 
 
 📌 Requisitos:
 
+Estructurar la arquitectura en capas de la aplicacion JAVA en distintos modulos para mejorar la mantenibilidad y escalabilidad 
+Tener en cuenta el control de excepciones y majeo de estas, finalmente hacer uso de la API mediante Postman
 
+* Model
+* Controller 
+* Service
+* Excepction
+* API Postman 
 
-con id (autogenerado), título, descripción y
-estado (pendiente, en progreso, completada).
-Listar todas las tareas.
-Obtener una tarea por ID.
-Actualizar una tarea (título, descripción y/o estado).
-Eliminar una tarea por ID.
+#### 1) Model  
 
+ Contiene los siguientes campos:  
+* id (autogenerado).
+* título.
+* descripción.
+* estado (con posibles valores: "pendiente", "en progreso", "completada").
 
-Objetivo: Crear una API RESTful completa con Spring Boot que implemente las operaciones CRUD para la gestión de tareas.
+#### 2) Controller
 
-Tecnología Clave: Spring Boot.
+Implementación CRUD. La API debe permitir:
 
-Requisitos Funcionales:
+* Crear una nueva tarea.
+* Listar todas las tareas.
+* Obtener una tarea específica por su id.
+* Actualizar cualquiera de los campos de una tarea existente.
+* Eliminar una tarea por su id.
 
-Modelo de Tarea: Debe incluir los siguientes campos:
+Extras : Eliminar una tarea si su estado esta completa, obtener una lista de tareas filtradas ,según su estado.
 
-id (autogenerado).
+#### 3) Service 
 
-título.
-
-descripción.
-
-estado (con posibles valores: "pendiente", "en progreso", "completada").
-
-Implementación CRUD: La API debe permitir:
-
-Crear una nueva tarea.
-
-Listar todas las tareas.
-
-Obtener una tarea específica por su id.
-
-Actualizar cualquiera de los campos de una tarea existente.
-
-Eliminar una tarea por su id.
-
-Endpoints Requeridos:
+Endpoints Requeridos:  
 
 Método	Endpoint	Descripción
-POST	/tareas	Crea una nueva tarea.
-GET	/tareas	Lista todas las tareas.
-GET	/tareas/{id}	Obtiene una tarea por su ID.
-PUT	/tareas/{id}	Actualiza completamente la tarea con el ID especificado.
-DELETE	/tareas/{id}	Elimina una tarea por su ID.
 
-Exportar a Hojas de cálculo
-Conceptos Practicados:
+* POST	/api/tareas	Crea una nueva tarea.    
+* GET	/api/tareas	Lista todas las tareas.    
+* GET	/api/tareas/{id}	Obtiene una tarea por su ID.    
+* PUT	/api/tareas/{id}	Actualiza completamente la tarea con el ID especificado.    
+* DELETE	/api/tareas/{id}	Elimina una tarea por su ID.    
+__Extras:__    
+* GET /api/tareas?estado=pendiente - Lista solo las tareas con estado "pendiente".    
+* GET /api/tareas?titulo=compra - Lista tareas cuyo título contenga "compra".  
+* GET /api/tareas?estado=en%20progreso&titulo=reporte - Lista tareas con estado "en progreso" y título que contenga "reporte".  
 
-Desarrollo de APIs REST con Spring Boot.
 
-Manejo de Verbos y Códigos HTTP (POST 201, GET 200, PUT 200/204, DELETE 200/204).
+#### 4)Excepction 
 
-Aplicación del concepto CRUD (Create, Read, Update, Delete).
+Se creoron dos Excepción Personalizada para Manejar un error especifco para el método EliminarTareaya que podria haber dos fallas:  
+* Tarea no encontrada: La tarea con ese ID no existe. (RecursoNoEncontradoException)
+* Estado incorrecto: La tarea existe, pero su estado no es "completada". (EstadoInvalidoException.java)
+
+Además para un manejo de errores más centralizado y personalizado, se creo GlobalExceptionHandler con la anotación @ControllerAdvice. 
+Esto reemplaza los ResponseEntity.notFound().build() en el controlador.
+Agrega un manejador en el ControllerAdvice para capturar la nueva excepción y devolver un código de estado 409 Conflict.
+
 
 Criterios de Finalización:
 El código para el Ejercicio Individual está completo y pasa las pruebas de lógica.
@@ -99,7 +100,7 @@ Integración con IDEs: los Entornos de Desarrollo Integrado (IDEs) populares com
 
 __2) Postman :__
 
-Plataforma de desarrollo y pruebas de APIs (Application Programming Interfaces) actuar como un "cliente" para tu API, permitiendo a desarrolladores y testers interactuar con los endpoints sin necesidad de construir una interfaz de usuario compleja o escribir mucho código inicial.
+El sitio web https://web.postman.co/home es una plataforma de desarrollo y pruebas de APIs (Application Programming Interfaces) actuar como un "cliente" para tu API, permitiendo a desarrolladores y testers interactuar con los endpoints sin necesidad de construir una interfaz de usuario compleja o escribir mucho código inicial.
 
 #### Funcionalidades Clave:
 
