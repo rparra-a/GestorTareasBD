@@ -76,13 +76,30 @@ Agrega un manejador en el ControllerAdvice para capturar la nueva excepción y d
 * Aplicación del concepto CRUD (Create, Read, Update, Delete).
 
 
-## Criterios de Finalización:
+### Criterios de Finalización:
 * El código para el Ejercicio está completo y pasa las pruebas de lógica.
 * La API REST de To-Do List está implementada en Spring Boot.
 * Todos los Endpoints Requeridos funcionan correctamente y devuelven los códigos HTTP apropiados.
 
 ------------------------------------------------------------------------------------------
+### Ruta de Prueba (Ejemplos de Solicitudes HTTP)
 
+Haremos uso de __Postman__ para enviar las peticiones.
+
+__Paso 0: Ejecutar la Aplicación__
+
+Asegúrate de que tu aplicación Spring Boot está corriendo en la IDE (usualmente, ejecutando la clase Application.java).
+
+__Paso 1: Creación de Datos de Prueba (POST)__
+
+Creamos algunas tareas con diferentes estados para probar el filtrado y la eliminación.
+
+| ID | Tarea formato JSON | Estado | Peticion |
+| :---: | :--- | :---: | ---: |
+| 1 | {"titulo": "Comprar leche", "descripcion": "Leche entera", "estado": "pendiente"} |❌ Pendiente| 	POST /api/tareas |
+| 2 | {"titulo": "Hacer reporte semanal", "descripcion": "Reporte de ventas", "estado": "en progreso"} | ⏳ En Progreso | POST /api/tareas |
+| 3 | {"titulo": "Pagar factura", "descripcion": "Internet y luz", "estado": "completada"} | ✔️ Completada | 	POST /api/tareas |
+| 4 | {"titulo": "Reporte final", "descripcion": "Entregar al jefe", "estado": "pendiente"} | ❌ Pendiente | POST /api/tareas. |
 
 
 ### RECURSOS TECNOLOGICOS:
