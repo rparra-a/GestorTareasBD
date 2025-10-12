@@ -122,7 +122,7 @@ __Caso A: Recurso No Encontrado (404)__
 
 | Petición| Petición (Ruta Completa) | Resultado Esperado |
 | :---: | :--- | :---: |
-| Buscar ID 99 | GET /api/tareas/99 | 404 Not Found. Cuerpo JSON personalizado.{"status": 404,"message": "Tarea no encontrada con ID: 99", "details": "uri=/api/tareas/99"} |		
+| Buscar ID 99 | GET /api/tareas/99 | 404 Not Found. Cuerpo JSON personalizado.  {"status": 404,"message": "Tarea no encontrada con ID: 99", "details": "uri=/api/tareas/99"} |		
 				
 __Caso B: Estado de Tarea Inválido al Eliminar (409 Conflicto)__
 
