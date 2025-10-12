@@ -130,11 +130,7 @@ Intentamos eliminar la Tarea 2 (Estado: en progreso). El servicio debe fallar y 
 
 | Petición| Petición (Ruta Completa) | Resultado Esperado |
 | :---: | :--- | :---: |
-| Eliminar ID 2 | DELETE /api/tareas/2 | 409 Conflict. Cuerpo JSON personalizado con mensaje de error sobre el estado.  {
-    "status": 409,
-    "message": "No se puede eliminar. La tarea con ID: 2 debe estar en estado 'completada' para ser eliminada. Estado actual: en progreso",
-    "details": "uri=/api/tareas/2"
-} |	
+| Eliminar ID 2 | DELETE /api/tareas/2 | 409 Conflict. Cuerpo JSON personalizado con mensaje de error sobre el estado.  {"status": 409,"message": "No se puede eliminar. La tarea con ID: 2 debe estar en estado 'completada' para ser eliminada. Estado actual: en progreso", "details": "uri=/api/tareas/2"} |	
 		
 __Paso 4: Probar la Eliminación Correcta (DELETE con Estado completada)__
 
