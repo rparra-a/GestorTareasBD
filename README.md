@@ -139,6 +139,35 @@ Intentamos eliminar la Tarea 3 (Estado: completada).
 | :---: | :--- | :---: |
 | Eliminar ID 3 | DELETE /api/tareas/3| 204 No Content (Eliminación exitosa). |	
 		
+__Paso 5 : Probar la Actualización de Tareas (PUT__
+
+Usaremos el ID de las tareas creadas en el Paso 1 (asumiendo que las Tareas 1, 2, y 4 aún existen).
+
+__Caso A: Actualización Completa (Cambiar Título, Descripción y Estado)__
+
+Vamos a actualizar la Tarea con ID=1 (originalmente: "Comprar leche", estado: pendiente).
+
+|  Petición | TPetición (Ruta Completa) | Cuerpo de la Petición (JSON) | Resultado Esperado |
+| :---: | :--- | :---: | ---: |
+| Actualizar ID 1 | PUT /api/tareas/12 | {"titulo": "Comprar pan y huevos", "descripcion": "Mercado", "estado": "completada"} | 200 OK. La Tarea 1 ahora tiene los nuevos valores. |		
+
+__Caso B: Actualización Parcial (Solo cambiar el Estado)__
+
+Vamos a actualizar la Tarea con ID=4 (originalmente: "Reporte final", estado: pendiente) para cambiarla a en progreso.
+
+Nota: En el TareaService.java modificado, la lógica de actualización se ajustó para mantener el valor anterior si el campo en la petición de actualización es null o una cadena vacía ("").
+
+|  Petición | TPetición (Ruta Completa) | Cuerpo de la Petición (JSON) | Resultado Esperado |
+| :---: | :--- | :---: | ---: |
+| Actualizar ID 4 | PUT /api/tareas/4| {"estado": "en progreso"} | 200 OK. El estado de la Tarea 4 cambia a en progreso. Título y descripción permanecen igual. |	
+
+__Caso C: Manejo de Errores al Actualizar (404 Not Found)__
+
+Intentamos actualizar una tarea que no existe (ID=99). El ControllerAdvice debe interceptar la RecursoNoEncontradoException.
+
+|  Petición | TPetición (Ruta Completa) | Cuerpo de la Petición (JSON) | Resultado Esperado |
+| :---: | :--- | :---: | ---: |
+| Actualizar ID 99 | PUT /api/tareas/99| {"estado": "pendiente"}| 404 Not Found. Cuerpo JSON personalizado. |	
 
 
 ### RECURSOS TECNOLOGICOS:
