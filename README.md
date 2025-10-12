@@ -168,7 +168,7 @@ Intentamos actualizar una tarea que no existe (ID=99). El ControllerAdvice debe 
 
 |  Petición | TPetición (Ruta Completa) | Cuerpo de la Petición (JSON) | Resultado Esperado |
 | :---: | :--- | :---: | ---: |
-| Actualizar ID 99 | PUT /api/tareas/99| {"estado": "pendiente"}| 404 Not Found. Cuerpo JSON personalizado. |	
+| Actualizar ID 99 | GET /api/tareas/99| {"estado": "pendiente"}| 404 Not Found. Cuerpo JSON personalizado. |	
 
 
 ### RECURSOS TECNOLOGICOS:
