@@ -131,6 +131,14 @@ Intentamos eliminar la Tarea 2 (Estado: en progreso). El servicio debe fallar y 
 | :---: | :--- | :---: |
 | Eliminar ID 2 | DELETE /api/tareas/2 | 409 Conflict. Cuerpo JSON personalizado con mensaje de error sobre el estado. |	
 		
+__Paso 4: Probar la Eliminación Correcta (DELETE con Estado completada)__
+
+Intentamos eliminar la Tarea 3 (Estado: completada).
+
+| Petición| Petición (Ruta Completa) | Resultado Esperado |
+| :---: | :--- | :---: |
+| Eliminar ID 3 | DELETE /api/tareas/3| 204 No Content (Eliminación exitosa). |	
+		
 
 
 ### RECURSOS TECNOLOGICOS:
