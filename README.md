@@ -106,7 +106,7 @@ __Paso 2: Probar el Filtrado (GET con Query Params)__
 Ahora probamos los filtros que agregamos al método obtenerTareasId().
 
 | Funcionalidad| Petición (Ruta Completa) | Resultado Esperado |
-| :---: | :---:  | : ---: |
+| :---: | :--- | :---: |
 | Filtrar por Estado | GET /api/tareas?estado=pendiente | Tareas con ID 1 y 4 |
 | Filtrar por Título| 	GET /api/tareas?titulo=reporte | Tareas con ID 2 y 4 |
 | Filtrar por Ambos | GET /api/tareas?estado=pendiente&titulo=reporte | Tarea con ID 4 |
