@@ -98,8 +98,28 @@ Creamos algunas tareas con diferentes estados para probar el filtrado y la elimi
 | :---: | :--- | :---: | ---: |
 | 1 | {"titulo": "Comprar leche", "descripcion": "Leche entera", "estado": "pendiente"} |❌ Pendiente| 	POST /api/tareas |
 | 2 | {"titulo": "Hacer reporte semanal", "descripcion": "Reporte de ventas", "estado": "en progreso"} | ⏳ En Progreso | POST /api/tareas |
-| 3 | {"titulo": "Pagar factura", "descripcion": "Internet y luz", "estado": "completada"} | ✔️ Completada | 	POST /api/tareas |
-| 4 | {"titulo": "Reporte final", "descripcion": "Entregar al jefe", "estado": "pendiente"} | ❌ Pendiente | POST /api/tareas. |
+| 3 | {"titulo": "Pagar factura", "descripcion": "Internet y luz", "estado": "completada"} | ✔️ Completada | POST /api/tareas |
+| 4 | {"titulo": "Reporte final", "descripcion": "Entregar al jefe", "estado": "pendiente"} | ❌ Pendiente | POST/api/tareas |
+
+__Paso 2: Probar el Filtrado (GET con Query Params)__
+
+Ahora probamos los filtros que agregamos al método obtenerTareasId().
+
+| Funcionalidad| Petición (Ruta Completa) | Resultado Esperado |
+| :---: | :---:  | : ---: |
+| Filtrar por Estado | GET /api/tareas?estado=pendiente | Tareas con ID 1 y 4 |
+| Filtrar por Título| 	GET /api/tareas?titulo=reporte | Tareas con ID 2 y 4 |
+| Filtrar por Ambos | GET /api/tareas?estado=pendiente&titulo=reporte | Tarea con ID 4 |
+| Listar Todo | GET /api/tareas | Tareas con ID 1, 2, 3, 4 |
+
+
+
+	
+	
+	
+		
+
+
 
 
 ### RECURSOS TECNOLOGICOS:
