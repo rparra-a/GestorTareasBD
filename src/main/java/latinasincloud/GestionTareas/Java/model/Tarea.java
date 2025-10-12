@@ -1,18 +1,29 @@
 package latinasincloud.GestionTareas.Java.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tareas")
 public class Tarea {
 
     // atributos de la Tarea
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private String titulo;
+
     private String descripcion;
-    private String estado; //pendiente, en progreso, completada
+
+    @ManyToOne
+    @JoinColumn(name = "estado_id", nullable = false)
+    private Estado estado; //pendiente, en progreso, completada
 
     // constructor por defecto
     public Tarea() {}
 
     // constructor con parámetros
-    public Tarea(int id, String estado, String descripcion, String titulo) {
+    public Tarea(int id, Estado estado, String descripcion, String titulo) {
         this.id = id;
         this.estado = estado;
         this.descripcion = descripcion;
@@ -40,18 +51,13 @@ public class Tarea {
         return descripcion;
     }
 
+    public Estado getEstado() {return estado;}
+
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
+    public void setEstado(Estado estado) {this.estado = estado;}
     /*@Override
     public String toString() {
         return "Tarea{" +

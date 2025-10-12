@@ -7,6 +7,8 @@ import latinasincloud.GestionTareas.Java.service.TareaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import latinasincloud.GestionTareas.Java.service.TareaService;
+import latinasincloud.GestionTareas.Java.dto.TareaDto;
 
 import java.util.List;
 
@@ -21,37 +23,27 @@ public class TareaController {
 
     // Crear Tarea POST
     @PostMapping
-    public ResponseEntity<Tarea> crearTarea(@RequestBody Tarea tarea) {
-        Tarea nuevaTarea = tareaService.crearTarea(tarea);
-        return ResponseEntity.status(201).body(nuevaTarea);
+    public ResponseEntity<?> crearTarea(@RequestBody TareaDto tarea) {
+        try {
+            TareaDto nuevaTarea = tareaService.crearTarea(tarea);
+            return ResponseEntity.status(201).body(nuevaTarea);
+        }catch (RuntimeException ex){
+            return ResponseEntity.status(400).body(ex.getMessage());
+        }
     }
 
-    // Listar todas las tareas (GET)
-   /* @GetMapping
-    public ResponseEntity<List<Tarea>> listarTareas() {
-        return ResponseEntity.ok(tareaService.listarTareas());
-    }
-    // esta clase permite responder al sistema que esta pidiendo la información con código HTTP
-*/
-
-    // Ahora acepta Query Params para filtrado
 
     @GetMapping
-    public ResponseEntity<List<Tarea>> listarTareas(
-            @RequestParam(required = false) String estado, // Parámetro de consulta opcional
-            @RequestParam(required = false) String titulo) { // Parámetro de consulta opcional
-
-        // Llama al servicio con los parámetros de filtrado
-        return ResponseEntity.ok(tareaService.listarTareas(estado, titulo));
+    public ResponseEntity<List<TareaDto>> listarTareas(){
+        return ResponseEntity.ok(tareaService.listarTareas());
     }
-
 
     // Obtener tarea por id (GET)
     // añadir otro endpoint para obtener el libro por Id
     //Obtener tarea por ID GET
     @GetMapping("/{id}")
-    public ResponseEntity<Tarea> obtenerTarea(@PathVariable int id) {
-        Tarea tarea = tareaService.obtenerTareaId(id);
+    public ResponseEntity<TareaDto> obtenerTarea(@PathVariable int id) {
+        TareaDto tarea = tareaService.obtenerTareaDto(id);
         if (tarea != null) {
             return ResponseEntity.ok(tarea);
         }
@@ -61,10 +53,15 @@ public class TareaController {
         }
     }
 
+    @GetMapping("/estado/{estado}")
+    public ResponseEntity<List<TareaDto>> obtenerTareasEstado(@PathVariable String estado) {
+        return ResponseEntity.ok(tareaService.obtenerTareasEstado(estado));
+    }
+
     // Actualizar tarea PUT
     @PutMapping("/{id}")
-    public ResponseEntity<Tarea> actualizarTarea(@PathVariable int id, @RequestBody Tarea tareaAc) {
-        Tarea actualizada = tareaService.actualizarTarea(id, tareaAc);
+    public ResponseEntity<TareaDto> actualizarTarea(@PathVariable int id, @RequestBody TareaDto tareaAc) {
+        TareaDto actualizada = tareaService.actualizarTarea(id, tareaAc);
         if (actualizada != null) {
             return ResponseEntity.ok(actualizada);
         }
@@ -77,14 +74,14 @@ public class TareaController {
     // Eliminar tarea (DELETE)  Ahora verifica el estado
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarTarea(@PathVariable int id) {
-        boolean eliminada = tareaService.EliminarTarea(id);
+        boolean eliminada = tareaService.eliminarTarea(id);
 
         if (eliminada){
             return ResponseEntity.noContent().build();
         }
         else{
             // Si la eliminación falló, determinamos la razón para lanzar la excepción correcta
-            Tarea tarea = tareaService.obtenerTareaId(id);
+            TareaDto tarea = tareaService.obtenerTareaDto(id);
 
             if (tarea == null) {
                 // Razón 1: Tarea no encontrada
@@ -97,16 +94,3 @@ public class TareaController {
         }
     }
 }
-
-/*
-Ejemplo de uso:
-
-GET /api/tareas - Lista todas las tareas.
-
-GET /api/tareas?estado=pendiente - Lista solo las tareas con estado "pendiente".
-
-GET /api/tareas?titulo=compra - Lista tareas cuyo título contenga "compra".
-
-GET /api/tareas?estado=en%20progreso&titulo=reporte - Lista tareas con estado "en progreso" y título que contenga "reporte".
-
-*/
