@@ -62,7 +62,7 @@ __Extras:__
 
 #### 4) Excepction 
 
-Se crearon dos Excepción Personalizada para Manejar un error especifco para el método EliminarTareaya que podria haber dos fallas:  
+Se crearon dos Excepción Personalizada para Manejar un error especifco para el método EliminarTarea ya que podria haber dos fallas:  
 * Tarea no encontrada: La tarea con ese ID no existe. (RecursoNoEncontradoException)
 * Estado incorrecto: La tarea existe, pero su estado no es "completada". (EstadoInvalidoException.java)
 
