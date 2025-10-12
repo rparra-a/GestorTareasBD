@@ -32,7 +32,8 @@ Tener en cuenta el control de excepciones y manejo de estas, finalmente hacer us
 
 #### 2) Controller
 
-Implementación CRUD. La API debe permitir:
+Implementación CRUD.  
+La API debe permitir:
 
 * Crear una nueva tarea.
 * Listar todas las tareas.
