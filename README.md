@@ -113,13 +113,24 @@ Ahora probamos los filtros que agregamos al método obtenerTareasId().
 | Listar Todo | GET /api/tareas | Tareas con ID 1, 2, 3, 4 |
 
 
+__Paso 3: Probar el Manejo de Errores (ControllerAdvice)__
+	
+Probamos los endpoints con IDs inválidos o estados incorrectos para ver la respuesta personalizada (JSON con código de error).	
+	
+__Caso A: Recurso No Encontrado (404)__
 
-	
-	
-	
+| Petición| Petición (Ruta Completa) | Resultado Esperado |
+| :---: | :--- | :---: |
+| Buscar ID 99 | GET /api/tareas/99 | 404 Not Found. Cuerpo JSON personalizado. |		
+				
+__Caso B: Estado de Tarea Inválido al Eliminar (409 Conflicto)__
+
+Intentamos eliminar la Tarea 2 (Estado: en progreso). El servicio debe fallar y el controlador debe lanzar EstadoInvalidoException.
+
+| Petición| Petición (Ruta Completa) | Resultado Esperado |
+| :---: | :--- | :---: |
+| Eliminar ID 2 | DELETE /api/tareas/2 | 409 Conflict. Cuerpo JSON personalizado con mensaje de error sobre el estado. |	
 		
-
-
 
 
 ### RECURSOS TECNOLOGICOS:
