@@ -6,7 +6,7 @@
 El repositorio de GitHub GestorTareas.Java contiene un Sistema de Gestión de tareas simple desarrollado en Java, utilizando los principios de la Programación Orientada a Objetos (POO) con herencia, polimorfismo y manejo de excepciones personalizadas, aplicar el concepto
 CRUD. 
 
-### Objetivos: 
+### Objetivos:  
 Crear una API RESTfull completa con Spring Boot que implemente las operaciones CRUD para la gestión de tareas.  
 Usar Postman como plataforma de desarrollo y pruebas de APIs (Verbos y códigos HTTP) enviar solicitudes (requests) a una API,  ver, analizar y validar las respuestas (responses).
 
