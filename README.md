@@ -14,7 +14,7 @@ Usar Postman como plataforma de desarrollo y pruebas de APIs (Verbos y códigos 
 📌 Requisitos:
 
 Estructurar la arquitectura en capas de la aplicacion JAVA en distintos modulos para mejorar la mantenibilidad y escalabilidad.  
-Tener en cuenta el control de excepciones y majeo de estas, finalmente hacer uso de la API mediante Postman
+Tener en cuenta el control de excepciones y manejo de estas, finalmente hacer uso de la API mediante Postman
 
 * Model
 * Controller 
