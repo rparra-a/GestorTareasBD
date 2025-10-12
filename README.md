@@ -150,7 +150,7 @@ Vamos a actualizar la Tarea con ID=1 (originalmente: "Comprar leche", estado: pe
 
 |  Petición | TPetición (Ruta Completa) | Cuerpo de la Petición (JSON) | Resultado Esperado |
 | :---: | :--- | :---: | ---: |
-| Actualizar ID 1 | PUT /api/tareas/12 | {"titulo": "Comprar pan y huevos", "descripcion": "Mercado", "estado": "completada"} | 200 OK. La Tarea 1 ahora tiene los nuevos valores. |		
+| Actualizar ID 1 | PUT /api/tareas/1 | {"titulo": "Comprar pan y huevos", "descripcion": "Mercado", "estado": "completada"} | 200 OK. La Tarea 1 ahora tiene los nuevos valores. |		
 
 __Caso B: Actualización Parcial (Solo cambiar el Estado)__
 
