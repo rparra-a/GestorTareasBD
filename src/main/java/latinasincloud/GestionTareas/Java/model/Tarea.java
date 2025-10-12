@@ -1,14 +1,17 @@
 package latinasincloud.GestionTareas.Java.model;
 
 public class Tarea {
+
+    // atributos de la Tarea
     private int id;
     private String titulo;
     private String descripcion;
     private String estado; //pendiente, en progreso, completada
 
-    public Tarea() {
-    }
+    // constructor por defecto
+    public Tarea() {}
 
+    // constructor con parámetros
     public Tarea(int id, String estado, String descripcion, String titulo) {
         this.id = id;
         this.estado = estado;
@@ -16,6 +19,7 @@ public class Tarea {
         this.titulo = titulo;
     }
 
+    // getters and setters encapsulamiento de los atributos
     public int getId() {
         return id;
     }
@@ -48,7 +52,7 @@ public class Tarea {
         this.estado = estado;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Tarea{" +
                 "id=" + id +
@@ -56,5 +60,5 @@ public class Tarea {
                 ", descripcion='" + descripcion + '\'' +
                 ", estado='" + estado + '\'' +
                 '}';
-    }
+    } */
 }
