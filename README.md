@@ -213,3 +213,25 @@ Ofrece la posibilidad de escribir scripts de prueba automáticos (en JavaScript)
 * Colecciones y Entornos (Collections and Environments):  
 Colecciones: Permite agrupar y organizar solicitudes relacionadas en carpetas lógicas. Esto facilita la reutilización y el intercambio de flujos de trabajo de API completos.  
 Entornos: Permite definir variables (como URLs base, tokens de autenticación o claves) que cambian según el contexto (desarrollo, prueba, producción). Esto simplifica el cambio entre diferentes configuraciones sin modificar las solicitudes.
+
+__3) PostgreSQL (Postgres)__
+PostgreSQL https://www.postgresql.org/ es un sistema de gestión de bases de datos relacional orientado a objetos (ORDBMS) de código abierto. Se le conoce por su solidez, fiabilidad y cumplimiento estricto del estándar SQL. A menudo se le considera una alternativa de código abierto a sistemas comerciales como Oracle o SQL Server, ofreciendo un amplio conjunto de características avanzadas.
+#### Funcionalidades Clave:
+
+* Orientado a Objetos y Relacional: Además de las características relacionales estándar, soporta herencia de tablas y tipos de datos definidos por el usuario, lo que le da una ventaja en el manejo de estructuras complejas.
+
+* Concurrencia (MVCC): Utiliza un sistema llamado Control de Concurrencia Multiversión (MVCC), que permite que las operaciones de lectura y escritura se realicen simultáneamente sin necesidad de bloqueos, mejorando el rendimiento en entornos de alta concurrencia.
+
+* Extensibilidad: Ofrece una gran variedad de tipos de datos nativos (incluyendo JSON, XML, direcciones IP, y figuras geométricas) y permite a los usuarios crear sus propias funciones y extensiones, siendo PostGIS (para datos geoespaciales) una de las más populares.
+
+* Cumplimiento ACID: Garantiza la Atomicidad, Consistencia, Aislamiento y Durabilidad de las transacciones, lo cual es fundamental para la integridad de los datos.
+
+__4) pgAdmin__
+pgAdmin es la plataforma de administración y desarrollo de código abierto más popular y rica en funciones para PostgreSQL.
+#### Funcionalidades Clave:
+* Gestión de Bases de Datos: Permite crear, modificar y eliminar bases de datos, esquemas, tablas, índices, vistas y otros objetos de PostgreSQL.
++ Herramienta de Consulta (Query Tool): Ofrece un editor SQL avanzado para escribir, ejecutar y depurar consultas.
+* Administración: Facilita la gestión de usuarios, roles, permisos y la realización de tareas administrativas como backups (copias de seguridad) y restauración.
+* Monitoreo: Proporciona un dashboard (panel de control) para visualizar el estado del servidor, las conexiones activas y el rendimiento de las consultas.
+
+
