@@ -2,6 +2,8 @@ package latinasincloud.GestionTareas.Java.model;
 
 import jakarta.persistence.*;
 
+// anotaciones de entidad y tabla que debe buscar
+
 @Entity
 @Table(name = "tareas")
 public class Tarea {
@@ -58,13 +60,5 @@ public class Tarea {
     }
 
     public void setEstado(Estado estado) {this.estado = estado;}
-    /*@Override
-    public String toString() {
-        return "Tarea{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", estado='" + estado + '\'' +
-                '}';
-    } */
+
 }

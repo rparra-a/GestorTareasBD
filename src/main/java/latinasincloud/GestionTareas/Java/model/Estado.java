@@ -1,10 +1,12 @@
-package latinasincloud.GestionTareas.Java.model;
+package latinasincloud.GestionTareas.Java.model; // capa de modelo defino las entidades
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "estados")
+
 public class Estado {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,6 +19,7 @@ public class Estado {
         this.nombre = nombre;
     }
 
+    // solo necesito get de los atributos para el estado de la tarea
     public int getId() {
         return id;
     }

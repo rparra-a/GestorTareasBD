@@ -71,7 +71,7 @@ public class TareaController {
         }
     }
 
-    // Eliminar tarea (DELETE)  Ahora verifica el estado
+    // Eliminar tarea (DELETE)  verifica el estado
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarTarea(@PathVariable int id) {
         boolean eliminada = tareaService.eliminarTarea(id);
