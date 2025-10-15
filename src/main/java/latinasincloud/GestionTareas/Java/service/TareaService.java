@@ -14,6 +14,8 @@ public class TareaService {
     @Autowired
     private ITareaRepository tareaRepository;
 
+    // uso repositorio de tarea y referencio a servicio estado
+
     @Autowired
     private EstadoService estadoService;
 
@@ -34,6 +36,8 @@ public class TareaService {
         return tarea;
     }
 
+    // crear tarea
+
     public TareaDto crearTarea(TareaDto tareaDto) {
         Estado estado = estadoService.obtenerEstadoPorNombre(tareaDto.getEstado());
         if (estado == null) {
@@ -46,6 +50,7 @@ public class TareaService {
         return toDto(guardada);
     }
 
+    //listar tareas
     public List<TareaDto> listarTareas() {
         return tareaRepository.findAll().stream().map(this::toDto).toList();
     }
@@ -53,6 +58,7 @@ public class TareaService {
     private Tarea obtenerTarea(int id) {
         return tareaRepository.findById(id).orElse(null);
     }
+
 
     public TareaDto obtenerTareaDto(int id) {
         Tarea tarea = obtenerTarea(id);
@@ -81,6 +87,7 @@ public class TareaService {
         return toDto(tarea);
     }
 
+    // eliminar
     public boolean eliminarTarea(int id) {
         Tarea tarea = obtenerTarea(id);
         if (tarea != null) {
