@@ -3,6 +3,8 @@ package latinasincloud.GestionTareas.Java.dto;
 import latinasincloud.GestionTareas.Java.model.Estado;
 import latinasincloud.GestionTareas.Java.model.Tarea;
 
+// Tiene los mismos atributos que tarea
+
 public class TareaDto {
     private int id;
     private String titulo;
@@ -16,6 +18,7 @@ public class TareaDto {
         this.descripcion = descripcion;
     }
 
+    // encapsula la informacion con los getters de los atributos
     public int getId() {
         return id;
     }
