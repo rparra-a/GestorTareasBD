@@ -193,6 +193,8 @@ Versión de Spring Boot y la versión de Java.
 Metadatos del proyecto: Nombre del grupo (Group), artefacto (Artifact) y el nombre del paquete.  
 Integración con IDEs: los Entornos de Desarrollo Integrado (IDEs) populares como IntelliJ IDEA, Eclipse STS y Visual Studio Code tienen integración directa con Spring Initializr, permitiendo crear proyectos Spring Boot desde la interfaz del IDE.
 
+__Spring Data JPA__ es un módulo (una parte) del proyecto Spring Data que tiene como objetivo simplificar y agilizar el desarrollo de aplicaciones que acceden a bases de datos relacionales, utilizando la especificación JPA (Java Persistence API).  En esencia, Spring Data JPA actúa como una capa de abstracción y automatización sobre JPA.
+
 __2) Postman :__
 
 El sitio web https://web.postman.co/home es una plataforma de desarrollo y pruebas de APIs (Application Programming Interfaces) actuar como un "cliente" para tu API, permitiendo a desarrolladores y testers interactuar con los endpoints sin necesidad de construir una interfaz de usuario compleja o escribir mucho código inicial.
