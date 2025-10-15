@@ -14,64 +14,53 @@ Este es el proyecto central que implementa un CRUD (Crear, Leer, Actualizar, Eli
 * **Verbos y Códigos HTTP:** Implementación correcta de métodos HTTP (POST, GET, PUT, DELETE) y sus códigos de respuesta.
 * **Persistencia de Datos con JPA:** Mapeo de entidades y uso de Spring Data JPA para interactuar con la base de datos.
 
-📌 Requisitos:
+#### 📐 Arquitectura de Capas del Proyecto (Spring Boot)  
 
-Estructurar la arquitectura en capas de la aplicacion JAVA en distintos modulos para mejorar la mantenibilidad y escalabilidad.  
-Tener en cuenta el control de excepciones y manejo de estas, finalmente hacer uso de la API mediante Postman
+El proyecto sigue una arquitectura jerárquica y modularizada, donde cada capa tiene una responsabilidad única y bien definida.
 
-* Model
-* Controller 
-* Service
-* Excepction
-* API Postman 
+#### 1. Capa de Presentación / Controladores (Controller)
+Propósito: Es la capa de entrada de la aplicación. Maneja las peticiones HTTP entrantes (entrantes) y devuelve las respuestas HTTP (salientes).  
+Responsabilidad:  
+* Mapear las URLs (endpoints) a métodos específicos de Java (ej: GET /tareas).
+* Recibir los datos de la petición (JSON) y validarlos a nivel básico.
+* Delegar la lógica de negocio a la capa de Servicio.
+* Formatear la respuesta (ej: devolver un objeto Tarea con código 201 Created).
+* Clases anotadas con @RestController y métodos con @GetMapping, @PostMapping, @PutMapping, @DeleteMapping.
+* Entidades: Utiliza DTOs (Data Transfer Objects) para la comunicación.
 
-#### 1) Model  
+#### 2. Capa de Lógica de Negocio / Servicio (Service)
+Propósito: Contiene toda la lógica de negocio de la aplicación y coordina las acciones.  
+Responsabilidad:
+* Implementar las reglas de negocio (ej: verificar que una tarea no se pueda eliminar si no está "Completada"
+* Manejar las transacciones.
+* Actuar como intermediario entre el Controlador y la capa de Persistencia.
+* Llamar a los métodos de la capa de Repositorio para manipular los datos.
+* Clases anotadas con @Service y a menudo @Transactional.
 
- Contiene los siguientes campos:  
-* id (autogenerado).
-* título.
-* descripción.
-* estado (con posibles valores: "pendiente", "en progreso", "completada").
+#### 3) Capa de Acceso a Datos / Repositorio (Repository)
+Propósito: Es la capa responsable de comunicarse directamente con la base de datos.  
+Responsabilidad:  
+* Ejecutar las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en las tablas.
+* Mapear las filas de la base de datos a objetos Java (Entidades) y viceversa.
+* Es responsable de traducir las operaciones del Service a consultas SQL (a través de Hibernate)
+* Gestionar la comunicación de bajo nivel (conexiones, sesiones, etc.).
+* Interfaces anotadas con @Repository que extienden de JpaRepository (Spring Data JPA).
 
-#### 2) Controller
+#### 4)  Capa de Persistencia (Database) Model (Modelo / Entidad)
+Propósito: El almacén físico de los datos.  
+Responsabilidad: 
+* Define las clases que serán mapeadas a las tablas de la BD (ej: Tarea.java)
+* Incluye anotaciones de JPA (@Entity, @Id, @Table, @Column)
+* Almacenar y recuperar los datos según las instrucciones SQL generadas por la capa de Repositorio (JPA/Hibernate).
+* Representa el estado actual de un registro en la base de datos.<
+* Tecnologías: PostgreSQL.
 
-Implementación CRUD.  
-La API debe permitir:
-
-* Crear una nueva tarea.
-* Listar todas las tareas.
-* Obtener una tarea específica por su id.
-* Actualizar cualquiera de los campos de una tarea existente.
-* Eliminar una tarea por su id.
-
-Extras : Eliminar una tarea si su estado esta completa, obtener una lista de tareas filtradas ,según su estado.
-
-#### 3) Service 
-
-Endpoints Requeridos:  
-
-Método	Endpoint	Descripción
-
-* POST	/api/tareas	Crea una nueva tarea.    
-* GET	/api/tareas	Lista todas las tareas.    
-* GET	/api/tareas/{id}	Obtiene una tarea por su ID.    
-* PUT	/api/tareas/{id}	Actualiza completamente la tarea con el ID especificado.    
-* DELETE	/api/tareas/{id}	Elimina una tarea por su ID.    
-__Extras:__    
-* GET /api/tareas?estado=pendiente - Lista solo las tareas con estado "pendiente".    
-* GET /api/tareas?titulo=compra - Lista tareas cuyo título contenga "compra".  
-* GET /api/tareas?estado=en%20progreso&titulo=reporte - Lista tareas con estado "en progreso" y título que contenga "reporte".  
-
-
-#### 4) Excepction 
-
-Se crearon dos Excepción Personalizada para Manejar un error especifco para el método EliminarTarea ya que podria haber dos fallas:  
-* Tarea no encontrada: La tarea con ese ID no existe. (RecursoNoEncontradoException)
-* Estado incorrecto: La tarea existe, pero su estado no es "completada". (EstadoInvalidoException.java)
-
-Además para un manejo de errores más centralizado y personalizado, se creo GlobalExceptionHandler con la anotación @ControllerAdvice. 
-Esto reemplaza los ResponseEntity.notFound().build() en el controlador.
-Agrega un manejador en el ControllerAdvice para capturar la nueva excepción y devolver un código de estado 409 Conflict.
+#### 5)  Capa de Comunicación DTO (Data Transfer Object)
+Propósito: Define el formato de intercambio de datos.
+Responsabilidad: 
+* Define las estructuras de datos que se usan para enviar y recibir información a través de la API (JSON).
+* Su objetivo es evitar exponer la Entidad (Model) directamente.
+  
 
 ### Conceptos Practicados:
 
