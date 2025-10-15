@@ -19,8 +19,9 @@ Este es el proyecto central que implementa un CRUD (Crear, Leer, Actualizar, Eli
 El proyecto sigue una arquitectura jerárquica y modularizada, donde cada capa tiene una responsabilidad única y bien definida.
 
 #### 1. Capa de Presentación / Controladores (Controller)
-Propósito: Es la capa de entrada de la aplicación. Maneja las peticiones HTTP entrantes (entrantes) y devuelve las respuestas HTTP (salientes).  
-Responsabilidad:  
+Propósito: Es la capa de entrada de la aplicación. Maneja las peticiones HTTP entrantes (entrantes) y devuelve las respuestas HTTP (salientes). 
+
+__Responsabilidad:__  
 * Mapear las URLs (endpoints) a métodos específicos de Java (ej: GET /tareas).
 * Recibir los datos de la petición (JSON) y validarlos a nivel básico.
 * Delegar la lógica de negocio a la capa de Servicio.
@@ -30,7 +31,8 @@ Responsabilidad:
 
 #### 2. Capa de Lógica de Negocio / Servicio (Service)
 Propósito: Contiene toda la lógica de negocio de la aplicación y coordina las acciones.  
-Responsabilidad:
+
+__Responsabilidad:__ 
 * Implementar las reglas de negocio (ej: verificar que una tarea no se pueda eliminar si no está "Completada"
 * Manejar las transacciones.
 * Actuar como intermediario entre el Controlador y la capa de Persistencia.
@@ -39,7 +41,8 @@ Responsabilidad:
 
 #### 3) Capa de Acceso a Datos / Repositorio (Repository)
 Propósito: Es la capa responsable de comunicarse directamente con la base de datos.  
-Responsabilidad:  
+
+__Responsabilidad:__ 
 * Ejecutar las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en las tablas.
 * Mapear las filas de la base de datos a objetos Java (Entidades) y viceversa.
 * Es responsable de traducir las operaciones del Service a consultas SQL (a través de Hibernate)
@@ -48,7 +51,8 @@ Responsabilidad:
 
 #### 4)  Capa de Persistencia (Database) Model (Modelo / Entidad)
 Propósito: El almacén físico de los datos.  
-Responsabilidad: 
+
+__Responsabilidad:__ 
 * Define las clases que serán mapeadas a las tablas de la BD (ej: Tarea.java)
 * Incluye anotaciones de JPA (@Entity, @Id, @Table, @Column)
 * Almacenar y recuperar los datos según las instrucciones SQL generadas por la capa de Repositorio (JPA/Hibernate).
@@ -57,22 +61,11 @@ Responsabilidad:
 
 #### 5)  Capa de Comunicación DTO (Data Transfer Object)
 Propósito: Define el formato de intercambio de datos.
-Responsabilidad: 
+
+__Responsabilidad:__ 
 * Define las estructuras de datos que se usan para enviar y recibir información a través de la API (JSON).
 * Su objetivo es evitar exponer la Entidad (Model) directamente.
   
-
-### Conceptos Practicados:
-
-* Desarrollo de APIs REST con Spring Boot.
-* Manejo de Verbos y Códigos HTTP (POST 201, GET 200, PUT 200/204, DELETE 200/204).
-* Aplicación del concepto CRUD (Create, Read, Update, Delete).
-
-
-### Criterios de Finalización:
-* El código para el Ejercicio está completo y pasa las pruebas de lógica.
-* La API REST de To-Do List está implementada en Spring Boot.
-* Todos los Endpoints Requeridos funcionan correctamente y devuelven los códigos HTTP apropiados.
 
 ------------------------------------------------------------------------------------------
 ### Ruta de Prueba (Ejemplos de Solicitudes HTTP)
