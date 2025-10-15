@@ -1,15 +1,18 @@
-## PROYECTO TAREA 6 : API DE GESTION DE TAREAS (To-Do List)
+## PROYECTO TAREA 7 : API DE GESTION DE TAREAS CON PERSISTENCIA (To-Do List)
 
 ### Desarrollado por Valentina Cartagena , Romina Parra y Bernarda Rodríguez.
-### Crea una API REST con Spring Boot que permita crear, leer,actualizar y eliminar tareas.
 
-El repositorio de GitHub GestorTareas.Java contiene un Sistema de Gestión de tareas simple desarrollado en Java, utilizando los principios de la Programación Orientada a Objetos (POO) con herencia, polimorfismo y manejo de excepciones personalizadas, aplicar el concepto
-CRUD. 
+### Crea una API REST con Spring Boot que permita crear, leer,actualizar y eliminar tareas de una base de datos.
 
-### Objetivos:  
-Crear una API RESTfull completa con Spring Boot que implemente las operaciones CRUD para la gestión de tareas.  
-Usar Postman como plataforma de desarrollo y pruebas de APIs (Verbos y códigos HTTP) enviar solicitudes (requests) a una API,  ver, analizar y validar las respuestas (responses).
+Este repositorio contiene el desarrollo de una API Restful para la gestión de tareas, utilizando **Java** y el framework **Spring Boot** para la implementación del backend y la persistencia de datos en JPA.
 
+Este es el proyecto central que implementa un CRUD (Crear, Leer, Actualizar, Eliminar) completo para la gestión de tareas, utilizando una base de datos.
+
+#### 🎯 Objetivos de Práctica
+
+* **Spring Boot:** Uso del framework para construir aplicaciones REST.
+* **Verbos y Códigos HTTP:** Implementación correcta de métodos HTTP (POST, GET, PUT, DELETE) y sus códigos de respuesta.
+* **Persistencia de Datos con JPA:** Mapeo de entidades y uso de Spring Data JPA para interactuar con la base de datos.
 
 📌 Requisitos:
 
@@ -169,6 +172,13 @@ Intentamos actualizar una tarea que no existe (ID=99). El ControllerAdvice debe 
 |  Petición | TPetición (Ruta Completa) | Cuerpo de la Petición (JSON) | Resultado Esperado |
 | :---: | :--- | :---: | ---: |
 | Actualizar ID 99 | GET /api/tareas/99| {"estado": "pendiente"}| 404 Not Found. Cuerpo JSON personalizado.{"status": 404,"message": "Tarea no encontrada con ID: 99","details": "uri=/api/tareas/99"} |	
+
+🛠️ Tecnologías Utilizadas
+
+* **Lenguaje:** Java
+* **Framework:** Spring Boot
+* **Persistencia:** Spring Data JPA
+* **Base de Datos:** PostgreSQL (PgAdmin)
 
 
 ### RECURSOS TECNOLOGICOS:
