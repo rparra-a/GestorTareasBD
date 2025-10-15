@@ -172,6 +172,7 @@ Intentamos actualizar una tarea que no existe (ID=99). El ControllerAdvice debe 
 * **Framework:** Spring Boot
 * **Persistencia:** Spring Data JPA
 * **Base de Datos:** PostgreSQL (PgAdmin)
+* **APIs (Interfaces de Programación de Aplicaciones):** Postman
 
 
 ### RECURSOS TECNOLOGICOS:
