@@ -66,7 +66,18 @@ __Responsabilidad:__
 * Define las estructuras de datos que se usan para enviar y recibir información a través de la API (JSON).
 * Su objetivo es evitar exponer la Entidad (Model) directamente.
   
+####  🔄 Flujo de Datos 
+* El flujo de trabajo en una operación típica (por ejemplo, crear una tarea) es estrictamente descendente y ascendente:
+* El cliente envía datos en formato DTO (JSON) al Controller.
+* El Controller valida la entrada (si el DTO es válido) y lo pasa al Service.
+* El Service aplica la lógica, convierte el DTO a un objeto Model y llama al método save() del Repository.
+* El Repository utiliza el Model para persistir los datos en la base de datos.
+* La respuesta (el objeto Model persistido) regresa al Service.
+* El Service convierte el Model de regreso a un DTO de respuesta.
+* El Controller envía el DTO de respuesta al cliente.
+* El proceso para verificar la base de datos PostgreSQL después de ejecutar las pruebas con Postman se realiza utilizando la herramienta de administración gráfica pgAdmin.
 
+  
 ------------------------------------------------------------------------------------------
 ### Ruta de Prueba (Ejemplos de Solicitudes HTTP)
 
