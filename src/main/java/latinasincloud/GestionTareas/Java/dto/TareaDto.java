@@ -18,7 +18,7 @@ public class TareaDto {
         this.descripcion = descripcion;
     }
 
-    // encapsula la informacion con los getters de los atributos
+    // encapsula la información con los getters de los atributos
     public int getId() {
         return id;
     }
