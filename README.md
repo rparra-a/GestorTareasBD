@@ -86,31 +86,28 @@ Las dependencias clave son:
 * spring-boot-starter-test: Para pruebas unitarias y de integración.
 -------------------------------------------------------------------------------------------
 ## 🛠️ Entidades Principales
-1. Estado
-Representa el estado de una tarea (ej. "pendiente", "en progreso", "completada").
+1. Estado: Representa el estado de una tarea (ej. "pendiente", "en progreso", "completada").
 
-id (int): Clave primaria autoincremental.
+* id (int): Clave primaria autoincremental.
 
-nombre (String): Nombre del estado (no puede ser nulo).
+* nombre (String): Nombre del estado (no puede ser nulo).
 
-2. Tarea
-Representa una tarea individual.
+2. Tarea: Representa una tarea individual.
 
-id (int): Clave primaria autoincremental.
+* id (int): Clave primaria autoincremental.
 
-titulo (String): Título de la tarea (no puede ser nulo).
+* titulo (String): Título de la tarea (no puede ser nulo).
 
-descripcion (String): Descripción de la tarea.
+* descripcion (String): Descripción de la tarea.
 
-estado (Estado): Relación ManyToOne con la entidad Estado.
+* estado (Estado): Relación ManyToOne con la entidad Estado.
 
-🗺️ Endpoints de la API
-La API expone los siguientes endpoints bajo la ruta base /api/tareas:
+🗺️ Endpoints de la API _La API expone los siguientes endpoints bajo la ruta base /api/tareas:
 
-Manejo de Errores
-404 Not Found: Lanzado por RecursoNoEncontradoException si una Tarea no existe (ej. al intentar obtener, actualizar o eliminar una ID no válida).
+Manejo de Errores:
+* 404 Not Found: Lanzado por RecursoNoEncontradoException si una Tarea no existe (ej. al intentar obtener, actualizar o eliminar una ID no válida).
 
-400 Bad Request: Lanzado por EstadoInvalidoException si se intenta eliminar una tarea que no está en estado 'completada'.
+* 400 Bad Request: Lanzado por EstadoInvalidoException si se intenta eliminar una tarea que no está en estado 'completada'.
 ___________________________________________________________________________________________
 
 ## 🚀 Configuración y Ejecución
@@ -128,7 +125,6 @@ Nota: Debes precargar los estados iniciales ("pendiente", "en progreso", "comple
 
 3. Ejecutar la Aplicación
 Si usas Maven:
-
 La aplicación se iniciará por defecto en http://localhost:8080.
 ------------------------------------------------------------------------------------------
 ### Ruta de Prueba (Ejemplos de Solicitudes HTTP)
