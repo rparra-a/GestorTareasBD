@@ -77,7 +77,13 @@ __Responsabilidad:__
 * El Controller envía el DTO de respuesta al cliente.
 * El proceso para verificar la base de datos PostgreSQL después de ejecutar las pruebas con Postman se realiza utilizando la herramienta de administración gráfica pgAdmin.
 
-  
+### Configuración del Proyecto (pom.xml summary)
+El archivo pom.xml utiliza la versión 3.5.6 de spring-boot-starter-parent y está configurado para usar Java 21. 
+Las dependencias clave son:
+* spring-boot-starter-web: Para la construcción de aplicaciones web y RESTful.
+* spring-boot-starter-data-jpa: Para la persistencia de datos usando JPA y Hibernate.
+* postgresql: Driver para la conexión a la base de datos PostgreSQL.
+* spring-boot-starter-test: Para pruebas unitarias y de integración.
 ------------------------------------------------------------------------------------------
 ### Ruta de Prueba (Ejemplos de Solicitudes HTTP)
 
