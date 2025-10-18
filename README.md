@@ -108,6 +108,70 @@ Manejo de Errores:
 * 404 Not Found: Lanzado por RecursoNoEncontradoException si una Tarea no existe (ej. al intentar obtener, actualizar o eliminar una ID no válida).
 
 * 400 Bad Request: Lanzado por EstadoInvalidoException si se intenta eliminar una tarea que no está en estado 'completada'.
+
+----------------------------------------------------------------------------------------------
+## 🛠️ Script SQL Entidades Principales
+
+###  📝 Script SQL para la tabla Estado
+CREATE TABLE estado (
+    -- Clave primaria autoincremental (SERIAL en PostgreSQL)
+    id SERIAL PRIMARY KEY,
+    
+    -- Nombre del estado (ej. 'pendiente', 'en progreso', 'completada'). No puede ser nulo.
+    nombre VARCHAR(50) NOT NULL UNIQUE
+);
+
+### 📝 Script SQL para la tabla Tarea
+CREATE TABLE tarea (
+    -- Clave primaria autoincremental
+    id SERIAL PRIMARY KEY,
+    
+    -- Título de la tarea. No puede ser nulo.
+    titulo VARCHAR(255) NOT NULL,
+    
+    -- Descripción de la tarea (puede ser nula o tener un tamaño mayor)
+    descripcion TEXT,
+    
+    -- Columna para la relación ManyToOne con Estado.
+    -- La columna se llama 'estado_id' por convención y almacena la clave foránea.
+    estado_id INT,
+    
+    -- Definición de la clave foránea que relaciona esta tabla con la tabla 'estado'
+    CONSTRAINT fk_estado
+        FOREIGN KEY (estado_id)
+        REFERENCES estado (id)
+        -- ON DELETE RESTRICT o SET NULL se pueden añadir, se utiliza el default (RESTRICT) si no se especifica.
+        -- Si la aplicación maneja la eliminación de estados, se podría considerar ON DELETE CASCADE o SET NULL.
+        -- Dada la naturaleza de los estados, asumimos que son fijos y no se borran, o se gestiona la integridad desde la capa de servicio.
+);
+
+### 📝 Scripts de Inserción de Estados Iniciales (estado) 🚦
+Primero, necesitamos asegurarnos de que los posibles estados para las tareas existan en la tabla estado.
+
+-- Inserción de los tres estados posibles para las tareas:
+INSERT INTO estado (nombre) VALUES 
+('pendiente'), 
+('en progreso'), 
+('completada');
+
+-- NOTA: Asumiendo que 'pendiente' tiene ID 1, 'en progreso' tiene ID 2 y 'completada' tiene ID 3 
+-- si la columna 'id' es SERIAL y se insertan en este orden.
+
+### 📝 Scripts de Inserción de Tareas Iniciales (tarea)
+Estas inserciones coinciden con las cuatro tareas iniciales descritas en la sección "Paso 1: Creación de Datos de Prueba (POST)" del README.md. Utilizamos los valores del ID de los estados insertados anteriormente (asumiendo IDs secuenciales predeterminados: 1 para 'pendiente', 2 para 'en progreso' y 3 para 'completada').
+
+ID	Tarea formato JSON	Estado	Estado ID (FK)
+1	{"titulo": "Comprar leche", ...}	Pendiente	1
+2	{"titulo": "Hacer reporte semanal", ...}	En Progreso	2
+3	{"titulo": "Pagar factura", ...}	Completada	3
+4	{"titulo": "Reporte final", ...}	Pendiente	1
+
+INSERT INTO tarea (titulo, descripcion, estado_id) VALUES 
+('Comprar leche', 'Leche entera', 1),                -- Estado ID 1: pendiente
+('Hacer reporte semanal', 'Reporte de ventas', 2),    -- Estado ID 2: en progreso
+('Pagar factura', 'Internet y luz', 3),               -- Estado ID 3: completada
+('Reporte final', 'Entregar al jefe', 1);             -- Estado ID 1: pendiente
+
 ___________________________________________________________________________________________
 
 ## 🚀 Configuración y Ejecución
