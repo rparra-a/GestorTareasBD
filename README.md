@@ -111,6 +111,26 @@ Las dependencias clave son:
 * spring-boot-starter-data-jpa: Para la persistencia de datos usando JPA y Hibernate.
 * postgresql: Driver para la conexión a la base de datos PostgreSQL.
 * spring-boot-starter-test: Para pruebas unitarias y de integración.
+
+___________________________________________________________________________________________
+
+## 🚀 Configuración y Ejecución
+Requisitos: 
+Java Development Kit (JDK) 21
+[Maven/Gradle]
+
+Una base de datos configurada (ej. PostgreSQL, MySQL, o H2 para desarrollo).
+
+1. Clonar el Repositorio
+2. Configurar la Base de Datos
+Asegúrate de configurar los parámetros de conexión a la base de datos en el archivo de configuración de Spring Boot (ej. application.properties o application.yml).
+
+Nota: Debes precargar los estados iniciales ("pendiente", "en progreso", "completada") en la tabla estados para que la aplicación funcione correctamente.
+
+3. Ejecutar la Aplicación
+Si usas Maven:
+
+La aplicación se iniciará por defecto en http://localhost:8080.
 ------------------------------------------------------------------------------------------
 ### Ruta de Prueba (Ejemplos de Solicitudes HTTP)
 
