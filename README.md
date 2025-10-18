@@ -14,33 +14,6 @@ Este es el proyecto central que implementa un CRUD (Crear, Leer, Actualizar, Eli
 * **Verbos y Códigos HTTP:** Implementación correcta de métodos HTTP (POST, GET, PUT, DELETE) y sus códigos de respuesta.
 * **Persistencia de Datos con JPA:** Mapeo de entidades y uso de Spring Data JPA para interactuar con la base de datos.
 
-## 🛠️ Entidades Principales
-1. Estado
-Representa el estado de una tarea (ej. "pendiente", "en progreso", "completada").
-
-id (int): Clave primaria autoincremental.
-
-nombre (String): Nombre del estado (no puede ser nulo).
-
-2. Tarea
-Representa una tarea individual.
-
-id (int): Clave primaria autoincremental.
-
-titulo (String): Título de la tarea (no puede ser nulo).
-
-descripcion (String): Descripción de la tarea.
-
-estado (Estado): Relación ManyToOne con la entidad Estado.
-
-🗺️ Endpoints de la API
-La API expone los siguientes endpoints bajo la ruta base /api/tareas:
-
-Manejo de Errores
-404 Not Found: Lanzado por RecursoNoEncontradoException si una Tarea no existe (ej. al intentar obtener, actualizar o eliminar una ID no válida).
-
-400 Bad Request: Lanzado por EstadoInvalidoException si se intenta eliminar una tarea que no está en estado 'completada'.
-
 #### 📐 Arquitectura de Capas del Proyecto (Spring Boot)  
 
 El proyecto sigue una arquitectura jerárquica y modularizada, donde cada capa tiene una responsabilidad única y bien definida.
@@ -111,7 +84,33 @@ Las dependencias clave son:
 * spring-boot-starter-data-jpa: Para la persistencia de datos usando JPA y Hibernate.
 * postgresql: Driver para la conexión a la base de datos PostgreSQL.
 * spring-boot-starter-test: Para pruebas unitarias y de integración.
+-------------------------------------------------------------------------------------------
+## 🛠️ Entidades Principales
+1. Estado
+Representa el estado de una tarea (ej. "pendiente", "en progreso", "completada").
 
+id (int): Clave primaria autoincremental.
+
+nombre (String): Nombre del estado (no puede ser nulo).
+
+2. Tarea
+Representa una tarea individual.
+
+id (int): Clave primaria autoincremental.
+
+titulo (String): Título de la tarea (no puede ser nulo).
+
+descripcion (String): Descripción de la tarea.
+
+estado (Estado): Relación ManyToOne con la entidad Estado.
+
+🗺️ Endpoints de la API
+La API expone los siguientes endpoints bajo la ruta base /api/tareas:
+
+Manejo de Errores
+404 Not Found: Lanzado por RecursoNoEncontradoException si una Tarea no existe (ej. al intentar obtener, actualizar o eliminar una ID no válida).
+
+400 Bad Request: Lanzado por EstadoInvalidoException si se intenta eliminar una tarea que no está en estado 'completada'.
 ___________________________________________________________________________________________
 
 ## 🚀 Configuración y Ejecución
