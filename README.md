@@ -180,6 +180,13 @@ Intentamos actualizar una tarea que no existe (ID=99). El ControllerAdvice debe 
 * **Base de Datos:** PostgreSQL (PgAdmin)
 * **APIs (Interfaces de Programación de Aplicaciones):** Postman
 
+Categoría	Tecnología	Uso
+Lenguaje	Java	Lenguaje de programación principal.
+Framework	Spring Boot	Para construir la aplicación REST.
+Persistencia	Spring Data JPA	Abstracción sobre JPA para el acceso a datos.
+Base de Datos	PostgreSQL (PgAdmin)	Sistema de gestión de bases de datos relacional.
+Pruebas API	Postman	Para enviar y probar las peticiones HTTP.
+
 
 ### RECURSOS TECNOLOGICOS:
 
