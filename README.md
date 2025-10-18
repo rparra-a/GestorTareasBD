@@ -118,8 +118,7 @@ CREATE TABLE estado (
     id SERIAL PRIMARY KEY,
     
     -- Nombre del estado (ej. 'pendiente', 'en progreso', 'completada'). No puede ser nulo.
-    nombre VARCHAR(50) NOT NULL UNIQUE
-);
+    nombre VARCHAR(50) NOT NULL UNIQUE);
 
 ### 📝 Script SQL para la tabla Tarea
 CREATE TABLE tarea (
@@ -142,8 +141,7 @@ CREATE TABLE tarea (
         REFERENCES estado (id)
         -- ON DELETE RESTRICT o SET NULL se pueden añadir, se utiliza el default (RESTRICT) si no se especifica.
         -- Si la aplicación maneja la eliminación de estados, se podría considerar ON DELETE CASCADE o SET NULL.
-        -- Dada la naturaleza de los estados, asumimos que son fijos y no se borran, o se gestiona la integridad desde la capa de servicio.
-);
+        -- Dada la naturaleza de los estados, asumimos que son fijos y no se borran, o se gestiona la integridad desde la capa de servicio.);
 
 ### 📝 Scripts de Inserción de Estados Iniciales (estado) 🚦
 Primero, necesitamos asegurarnos de que los posibles estados para las tareas existan en la tabla estado.
