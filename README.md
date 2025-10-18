@@ -1,4 +1,4 @@
-## PROYECTO TAREA 7 : API DE GESTION DE TAREAS CON PERSISTENCIA (To-Do List)
+### PROYECTO TAREA 7 : API DE GESTION DE TAREAS CON PERSISTENCIA (To-Do List)
 
 ### Desarrollado por Valentina Cartagena , Romina Parra y Bernarda Rodríguez.
 
