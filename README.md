@@ -169,7 +169,6 @@ INSERT INTO tarea (titulo, descripcion, estado_id) VALUES
 ('Hacer reporte semanal', 'Reporte de ventas', 2),    -- Estado ID 2: en progreso
 ('Pagar factura', 'Internet y luz', 3),               -- Estado ID 3: completada
 ('Reporte final', 'Entregar al jefe', 1);             -- Estado ID 1: pendiente
-
 ___________________________________________________________________________________________
 
 ## 🚀 Configuración y Ejecución
